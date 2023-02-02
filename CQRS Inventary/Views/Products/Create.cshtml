@@ -1,0 +1,49 @@
+﻿@model CQRS_Inventary.Models.Product
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="w-50 mx-auto">
+<h1>Create Product</h1>
+<hr/>
+@using (Html.BeginForm("Create", "Products"))
+{
+    @Html.ValidationSummary(true)
+    <div class="form-group">
+        @Html.LabelFor(m => m.ProductName)
+        @Html.TextBoxFor(m => m.ProductName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ProductName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ProductExpirationDate)
+        @Html.TextBoxFor(m => m.ProductExpirationDate, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ProductExpirationDate)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ProductNetPrice)
+        @Html.TextBoxFor(m => m.ProductNetPrice, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ProductNetPrice)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ProductQuantity)
+        @Html.TextBoxFor(m => m.ProductQuantity, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ProductQuantity)
+    </div>
+    <div class="form-group">
+    @Html.LabelFor(m => m.ProductWeight)
+        @Html.TextBoxFor(m => m.ProductWeight, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ProductWeight)
+    </div>
+    <div class="form-group mb-2">
+        @Html.LabelFor(m => m.ProductType)
+        @Html.TextBoxFor(m => m.ProductType, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ProductType)
+    </div>
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+
+}
+</div>
+
+

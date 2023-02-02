@@ -1,0 +1,55 @@
+﻿@model IEnumerable<CQRS_Inventary.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+        <h1>Products</h1>
+</div>
+
+<br />
+<table id="products" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductNetPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductExpirationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductWeight)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductNetPrice)
+                </td>
+                                <td>
+                    @Html.DisplayFor(modelItem => item.ProductExpirationDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductWeight)
+                </td>
+                <td class="w-25">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Details", "Details", new { id=item.Id }, new { @class = "btn btn-secondary" })
+                    @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
